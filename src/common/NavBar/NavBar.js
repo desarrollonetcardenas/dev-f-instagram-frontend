@@ -6,8 +6,11 @@ class NavBar extends Component {
     return (
         <nav>
             <div className="nav-wrapper bg-main">
-            <img  className="brand-logo" src="https://www.biscuitsandbath.com/wp-content/uploads/2018/05/instagram-logo-2.png" alt="" />
+                <a href="/">
+                    <img className="brand-logo" src={process.env.PUBLIC_URL + '/instagram-vector.png'} alt="" />
+                </a>
                 <ul className="right hide-on-med-and-down">
+                    <a href="/signup" className="btn-btn-primary">Sing Up</a>
                 </ul>
             </div>
         </nav>

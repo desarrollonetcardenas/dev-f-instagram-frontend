@@ -1,11 +1,12 @@
 .brand-logo {
     position: absolute;
-    color: #fff;
-    display: inline-block;
-    font-size: 2.1rem;
-    padding: 0px;
-    margin: 0px;
+    margin: 0 0 0 -49%;
     height: 64px;
     width: 71px;
 
+}
+
+.nav-wrapper {
+    position: relative;
+    height: 100% !important;
 }
