@@ -4,7 +4,8 @@ import { setContext } from "apollo-link-context";
 import { InMemoryCache } from "apollo-cache-inmemory";
 
 
-const API_URL = 'https://dev-f-netflix-api.herokuapp.com';
+const API_URL = 'http://devf.laziness.rocks:8000';
+// const API_URL = 'https://dev-f-netflix-api.herokuapp.com';
 const httpLink = createHttpLink({
     uri: `${API_URL}/graphql`,
     credentials: "include"
