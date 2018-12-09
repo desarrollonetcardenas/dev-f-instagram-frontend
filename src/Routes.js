@@ -6,7 +6,7 @@ import { SignUp } from './components/SingUp';
 import {Login} from './components/Login';
 
 const Logout = () => {
-    localStorage.removeItem("instragramToken")
+    localStorage.removeItem("instagramToken")
     return <Redirect to="/login" />
 }
 
