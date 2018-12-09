@@ -19,6 +19,7 @@ class NavBar extends Component {
                             <li><a href="/logout" className="btn-btn-primary">Logout</a></li>
                             ) : (
                             <React.Fragment>
+                                <li><a href="/posts" className="btn-btn-primary">Posts</a></li>
                                 <li><a href="/signup" className="btn-btn-primary">Sing Up</a></li>
                                 <li><a href="/login" className="btn-btn-primary">Login</a></li>
                             </React.Fragment>
