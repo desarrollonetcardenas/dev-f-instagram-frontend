@@ -6,7 +6,7 @@ import { InMemoryCache } from "apollo-cache-inmemory";
 
 // const API_URL = 'http://devf.laziness.rocks:8000';
 // const API_URL = 'https://dev-f-netflix-api.herokuapp.com';
-const API_URL = 'http://633cf769.ngrok.io';
+const API_URL = 'http://640d2b93.ngrok.io';
 
 const httpLink = createHttpLink({
     uri: `${API_URL}/graphql`,

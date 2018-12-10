@@ -1,16 +1,24 @@
 import React, { Component } from 'react'
 
 import './Home.scss';
+import isAuthenticated from "../../isAuthenticated";
+import { Posts } from "../Posts/";
 
 
 
 class Home extends Component {
 
-    isAuthenticated = () => {
-        if(localStorage.getItem("instagramToken"))
-            return true;
-        else
-            return false;
+
+    renderAuthenticated = () => {
+        if(isAuthenticated()){
+            return (
+                <React.Fragment>
+                    <Posts></Posts>
+                </React.Fragment>
+            )
+        } else {
+
+        }
     }
 
     render() {
@@ -18,6 +26,9 @@ class Home extends Component {
             <div className="Home">
                 <div className="row">
                     <div className="col s6 offset-s3 Home-title">
+                    {
+                        this.renderAuthenticated()
+                    }
                     </div>
                 </div>
             </div>
