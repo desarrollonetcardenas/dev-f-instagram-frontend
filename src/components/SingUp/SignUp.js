@@ -12,10 +12,7 @@ const REGISTER = gql`
         signup(data:{ first_name:$first_name,
                         last_name:$last_name,
                         email:$email,
-                        password:$password,
-                        birth_date: "2018/01/01",
-                        gender: "Male",
-                        nationality: "Mexicano"
+                        password:$password
                     }){
                         token
                     }
