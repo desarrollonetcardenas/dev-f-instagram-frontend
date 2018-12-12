@@ -14,12 +14,12 @@ const httpLink = createHttpLink({
 });
 
 const authLink = setContext((_, {headers}) => {
-    const token = localStorage.getItem('instragramToken');
+    const token = localStorage.getItem('instagramToken');
     return {
         headers: {
             ...headers,
             // mode: 'no-cors',
-            authorization: token ? `JWT ${token}` : ''
+            Authorization: token ? `JWT ${token}` : ''
         }
     }
 });
