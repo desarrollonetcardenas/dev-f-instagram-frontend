@@ -8,21 +8,21 @@ import  firebaseConfig from "../../firebaseConfig";
 
 
 const CREATE_POST = gql`
-    mutation newPost($data:PostInput!){
-        createInstagramPost(data:$data)
-    }
-`
+    mutation newPost($data: PostInput!){
+  createInstagramPost(data: $data)
+}`
 
 export default class PostForm extends Component {
 
     constructor(props){
         super(props);
         this.state = {
-            user_id: "1",
+            user_id: '5c1049634eed5c002a61d831',
             title: '',
             photo: '',
-            likes: [{user_id: "1", user_name:"jose"}],
-            comments: []
+            message: '',
+            likes: [{user_id: "5c1049634eed5c002a61d831"}],
+            comments: ''
         }
     }
 
@@ -34,9 +34,13 @@ export default class PostForm extends Component {
         e.preventDefault();
         let data = {...this.state};
 
+        data.likes = [{
+            user_id: this.state.user_id
+        }];
+
         data.comments = [{
             user_id: this.state.user_id,
-            user_comment: this.state.comments
+            comment: this.state.comments
         }];
 
         delete data.progress;
@@ -87,8 +91,19 @@ export default class PostForm extends Component {
                             <div className="col s5 input-field">
                                 <Input
                                     type="text"
+                                    id="message"
+                                    name="Message"
+                                    value={this.state.message}
+                                    setInput={this.handleInput}
+                                    required
+                                ></Input>
+                            </div>
+
+                            <div className="col s5 input-field">
+                                <Input
+                                    type="text"
                                     id="title"
-                                    name="Title"
+                                    name="Title Post"
                                     value={this.state.title}
                                     setInput={this.handleInput}
                                     required

@@ -6,6 +6,10 @@ export default class PostCard extends Component {
 
     constructor(props) {
         super(props);
+
+        console.log(props);
+
+
     }
 
     renderCardAction = () => {
@@ -34,11 +38,11 @@ export default class PostCard extends Component {
                 <div className="col s12 m12">
                     <div className="card">
                         <div className="card-image">
-                            <img src={this.props.image} alt="" />
+                            <img src={this.props.photo} alt="" />
                             <span className="card-title">{this.props.cardTitle}</span>
                          </div>
                             <div className="card-content">
-                                <p>{this.props.cardContent}</p>
+                                <p>{this.props.cardMessage}</p>
                             </div>
                             <div className="card-action">
                                 {

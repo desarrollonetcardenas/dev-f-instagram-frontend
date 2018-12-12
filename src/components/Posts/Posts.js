@@ -1,17 +1,71 @@
 import React, { Component } from 'react'
+import gql from "graphql-tag";
+import { Query } from "react-apollo";
+
+
 import PostCard from './PostCard';
+import { Preloader } from "../../common/Preloader";
+
+const GET_POSTS_BY_USER = gql`
+  query GetAllPosts($id: ID){
+    postsByUser(id: $id){
+      _id,
+      user_id,
+      title,
+      photo,
+      message,
+      likes{
+        user_id
+      }
+      comments {
+        user_id, user_comment
+      }
+    }
+  }
+`
 
 export default class Posts extends Component {
+
+  constructor(){
+    super();
+    this.state = {
+      user_id: '5c1049634eed5c002a61d831'
+    }
+  }
+
   render() {
     return (
-      <div>
-          <PostCard
-            image="https://firebasestorage.googleapis.com/v0/b/dev-f-netflix.appspot.com/o/covers%2F3c86de2a-54da-45d7-8090-69cbfeee1461.jpg?alt=media&token=ab595217-bc45-4de4-9498-8e441eb1041f"
-            liked={false}
-            cardTitle="Star Trek 2019"
-            cardContent="I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively."
-          >
-          </PostCard>
+      <div className="container">
+        <div className="row">
+            <Query query={GET_POSTS_BY_USER} variables={{id: this.state.user_id}}>
+            {
+              ({data,error,loading}) => {
+                if(error) return <h4>{"Hubo un Error !! :("}</h4>
+                if(loading) return  <Preloader/>;
+
+                console.log("DATA RESULT: ", data);
+
+                const posts = data.postsByUser.map((itempost,index) => (
+                  <div className="col s12" key={index}>
+                    <PostCard
+                      id={itempost._id}
+                      photo={itempost.photo}
+                      liked={false}
+                      cardTitle={itempost.title}
+                      cardMessage={itempost.message}
+                      >
+                    </PostCard>
+                  </div>
+                ))
+                return (
+                  <React.Fragment>
+                    {posts}
+                  </React.Fragment>
+                )
+              }
+            }
+            </Query>
+          </div>
       </div>
     )
   }
