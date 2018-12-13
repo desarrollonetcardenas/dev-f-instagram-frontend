@@ -4,11 +4,12 @@ import { Mutation } from "react-apollo";
 
 import  "./PostCard.scss";
 import payload from "../../payload";
+import { Preloader } from '../../common/Preloader';
 
 
-const SAVE_LIKE_ACTTION = gql`
-    mutation saveLikeAction($id: ID){
-        saveLikedActionPost(id: $id)
+const REGISTER_LIKE = gql`
+    mutation registerLike($postID:ID!,$user_id:ID!){
+        saveLikedActionPost(postID:$postID,user_id:$user_id)
     }
 `
 
@@ -23,20 +24,24 @@ export default class PostActionCard extends Component {
         this.state = {
             user_id: id
         }
+        console.log("PROPS: ", this.props);
     }
 
-    handleSubmit = (e) => {
+    handleSubmit = (e, registerLike) => {
       e.preventDefault();
+
+      registerLike({variables: {postID:this.props.id, user_id:this.state.user_id}});
     }
 
 
   render() {
     return (
-        <Mutation mutation={SAVE_LIKE_ACTTION} variables={{id: this.state.user_id}}>
+        <Mutation mutation={REGISTER_LIKE}>
         {
-            (saveLikeAction,{data,error,loading}) => {
+            (registerLike,{data,error,loading}) => {
+                if(loading) return <Preloader/>
                 return (
-                    <form onSubmit={this.handleSubmit}>
+                    <form onSubmit={e => this.handleSubmit(e, registerLike)}>
                         <span className="action-card-css">
                             <p><label htmlFor="">{this.props.likes.length} likes</label></p>
                             <button type="submit">

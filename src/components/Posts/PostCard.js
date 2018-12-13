@@ -28,7 +28,7 @@ export default class PostCard extends Component {
                                 <p>{this.props.cardMessage}</p>
                             </div>
                             <div className="card-action">
-                                <PostActionCard likes={this.props.likes} comments={this.props.comments}></PostActionCard>
+                                <PostActionCard id={this.props.id} likes={this.props.likes} comments={this.props.comments}></PostActionCard>
                             </div>
                         </div>
                     </div>
