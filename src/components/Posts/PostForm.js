@@ -5,6 +5,7 @@ import FileUploader from "react-firebase-file-uploader";
 
 import { Input } from "../../common/Input";
 import  firebaseConfig from "../../firebaseConfig";
+import payload from "../../payload";
 
 
 const CREATE_POST = gql`
@@ -16,12 +17,13 @@ export default class PostForm extends Component {
 
     constructor(props){
         super(props);
+        const {id} = payload();
         this.state = {
-            user_id: '5c1049634eed5c002a61d831',
+            user_id: id,
             title: '',
             photo: '',
             message: '',
-            likes: [{user_id: "5c1049634eed5c002a61d831"}],
+            likes: [{user_id: id}],
             comments: ''
         }
     }

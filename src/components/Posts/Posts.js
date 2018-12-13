@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
 
+import payload from "../../payload";
+
 
 import PostCard from './PostCard';
 import { Preloader } from "../../common/Preloader";
@@ -28,8 +30,15 @@ export default class Posts extends Component {
 
   constructor(){
     super();
+
+    const {id} =  payload();
+
+    console.log("USER_ID: ", id);
+
+
+
     this.state = {
-      user_id: '5c1049634eed5c002a61d831'
+      user_id: id
     }
   }
 

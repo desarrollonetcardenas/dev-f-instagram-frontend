@@ -25,7 +25,7 @@ class Home extends Component {
         return (
             <div className="Home">
                 <div className="row">
-                    <div className="col s6 offset-s3 Home-title">
+                    <div className="col s12 Home-title">
                     {
                         this.renderAuthenticated()
                     }
