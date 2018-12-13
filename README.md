@@ -1,44 +1,75 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Dev.f instagram front-end
 
-## Available Scripts
+This is the front-end for the dev.f batch one of Culiacan, its backend can be found [here][Backend link] 
+### Table of Contents
+1. [Preparing the environment](#Pre-requisites)
+    1. [Requirements for running locally](#Dev-mode)
+2. [Docker](#Docker)
+    1. [Requirements for running the containers](#Pre-requisites)
+    1. [Running the production ready containers](#Running-the-production-ready-containers)
 
-In the project directory, you can run:
+## Pre requisites
+### Dev mode
+To install the dependencies
+```bash
+yarn install
+```
 
-### `npm start`
+When developing it's recommended to use to built in sever that comes bundled with the app which can be launched with
+```bash
+yarn start
+```
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+If you however prefer to work with the compiled static files they can be created with
+```bash
+yarn build
+```
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+Its output will be at **build/** and can now be placed into a web server such as nginx or apache
 
-### `npm test`
+## Docker
+### Pre requisites
+To install docker in ubuntu 16.04
+```bash
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 
-### `npm run build`
+sudo apt-get update
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+apt-cache policy docker-ce
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+sudo apt-get install -y docker-ce
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+In case of ubuntu 18.04
+```bash
+sudo apt-get install -y docker.io
+```
 
-### `npm run eject`
+Next docker compose will be requiered
+```bash
+sudo curl -L "https://github.com/docker/compose/releases/download/1.23.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+sudo chmod +x /usr/local/bin/docker-compose
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Running the production ready containers
+Docker will perform all the necesary steps here, gathering the dependencies, building them into new statics and placing them into a container with a nginx server in the front to serve them
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+To buld the new containers use the following command, the **--build** flag will force the containers to be rebuilt instead of using the previous ones
+```bash
+docker-compose up --build -d
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+To tear down the currently running containers
+```bash
+docker-compose down -v
+```
 
-## Learn More
+Alternatively both commands may be chained should a problem arise with them
+```bash
+docker-compose down -v && docker-compose up --build -d
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+[Backend link]: (https://github.com/PootisPenserHere/devf-instagram-api)
