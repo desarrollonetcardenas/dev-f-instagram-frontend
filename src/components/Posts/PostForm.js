@@ -24,7 +24,8 @@ export default class PostForm extends Component {
             photo: '',
             message: '',
             likes: [{user_id: id}],
-            comments: ''
+            comments: '',
+            is_active: true
         }
     }
 

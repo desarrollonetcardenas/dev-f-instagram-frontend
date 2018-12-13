@@ -9,8 +9,8 @@ import PostCard from './PostCard';
 import { Preloader } from "../../common/Preloader";
 
 const GET_POSTS_BY_USER = gql`
-  query GetAllPosts($id: ID){
-    postsByUser(id: $id){
+  query GetAllPosts{
+    getAllPosts{
       _id,
       user_id,
       title,
@@ -21,7 +21,8 @@ const GET_POSTS_BY_USER = gql`
       }
       comments {
         user_id, user_comment
-      }
+      },
+      is_active
     }
   }
 `
@@ -33,10 +34,6 @@ export default class Posts extends Component {
 
     const {id} =  payload();
 
-    console.log("USER_ID: ", id);
-
-
-
     this.state = {
       user_id: id
     }
@@ -46,7 +43,7 @@ export default class Posts extends Component {
     return (
       <div className="container">
         <div className="row">
-            <Query query={GET_POSTS_BY_USER} variables={{id: this.state.user_id}}>
+            <Query query={GET_POSTS_BY_USER}>
             {
               ({data,error,loading}) => {
                 if(error) return <h4>{"Hubo un Error !! :("}</h4>
@@ -54,7 +51,7 @@ export default class Posts extends Component {
 
                 console.log("DATA RESULT: ", data);
 
-                const posts = data.postsByUser.map((itempost,index) => (
+                const posts = data.getAllPosts.map((itempost,index) => (
                   <div className="col s12" key={index}>
                     <PostCard
                       id={itempost._id}
@@ -62,6 +59,8 @@ export default class Posts extends Component {
                       liked={false}
                       cardTitle={itempost.title}
                       cardMessage={itempost.message}
+                      likes={itempost.likes}
+                      comments={itempost.comments}
                       >
                     </PostCard>
                   </div>
