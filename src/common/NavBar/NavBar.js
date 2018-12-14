@@ -9,23 +9,26 @@ class NavBar extends Component {
   render() {
     return (
         <React.Fragment>
-            <nav className="navbar">
-                <div><a href='#'><i className="fa fa-instagram"></i><span></span></a></div>
-                {/* <div className='lil-bar'>
-                    <div className='bar-cont'>
-                        <a href='#' role="button"><i className="fa fa-user-plus"></i></a>
-                        <a href='#' onclick='return false;' className='list-order' role="button"><i className="fa fa-ellipsis-h"></i></a>
-                    </div>
-                </div>
-                <div className="list">
-                    <ul>
-                        <li><a href="https://goo.gl/TChSJ4" target='_blank'><img src="https://goo.gl/aVijkX" className="avatar avatar-50"/>uncle_oreo</a></li>
-                        <li><a href='#'>Log in</a></li>
-                        <li><a href='#'>Sign up</a></li>
-                        <li><a href='#'>Report this user</a></li>
-                        <li className='collapse'><a href='#'>Collapse the bar</a></li>
+            <nav>
+                <div class="nav-wrapper">
+                    <a href="#" class="brand-logo">Instagram Devf</a>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    {
+                        isAuthenticated() == true ? (
+                            <React.Fragment>
+                                <li><a href="/logout">Logout</a></li>
+                                <li><a href="/uploadpost">Upload Post</a></li>
+                                <li><a href="/posts">Posts</a></li>
+                            </React.Fragment>
+                        ) : (
+                            <React.Fragment>
+                            <li><a href="/login">Login</a></li>
+                            <li><a href="/signup">Sign Up</a></li>
+                            </React.Fragment>
+                        )
+                    }
                     </ul>
-                </div> */}
+                </div>
             </nav>
         </React.Fragment>
     )
