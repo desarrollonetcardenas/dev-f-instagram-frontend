@@ -1,4 +1,4 @@
-# Dev.f instagram front-end
+# Dev.f instagram front-end [![Build Status](https://travis-ci.org/desarrollonetcardenas/dev-f-instagram-frontend.svg?branch=master)](https://travis-ci.org/desarrollonetcardenas/dev-f-instagram-frontend)
 
 This is the front-end for the dev.f batch one of Culiacan, its backend can be found [here][Backend link] 
 ### Table of Contents
@@ -72,4 +72,4 @@ Alternatively both commands may be chained should a problem arise with them
 docker-compose down -v && docker-compose up --build -d
 ```
 
-[Backend link]: (https://github.com/PootisPenserHere/devf-instagram-api)
+[Backend link]: <https://github.com/PootisPenserHere/devf-instagram-api>
