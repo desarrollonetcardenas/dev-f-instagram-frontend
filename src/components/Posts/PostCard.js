@@ -10,11 +10,6 @@ export default class PostCard extends Component {
         super(props);
     }
 
-    saveLike = (e) => {
-        e.preventDefault();
-        this.animateLikeIcon = "like-icon jello animated";
-    }
-
     render() {
         return (
             <div className="row">
