@@ -8,26 +8,40 @@ export default class PostCard extends Component {
 
     constructor(props) {
         super(props);
+        console.log("PROPS: ", props);
     }
 
     render() {
         return (
-            <div className="row">
-                <div className="col s12 m12">
-                    <div className="card">
-                        <div className="card-image">
-                            <img src={this.props.photo} alt="" />
-                            <span className="card-title">{this.props.cardTitle}</span>
-                         </div>
-                            <div className="card-content">
-                                <p>{this.props.cardMessage}</p>
+            <form name="formPostCard" id="formPostCard">
+                <section>
+                    <div className='insta fade-scroll'>
+                        <div className='top-insta'>
+                            <a href='#' target='_blank' className='user'>{this.props.cardTitle}</a>
+                            <span className= 'dot'></span>
+                        </div>
+                        <div className='post'>
+                            <div className="overlay">
+                                <span></span>
                             </div>
-                            <div className="card-action">
-                                <PostActionCard id={this.props.id} likes={this.props.likes} comments={this.props.comments}></PostActionCard>
-                            </div>
+                            <img alt={this.props.cardTitle} src={this.props.photo} />
+                        </div>
+                        <div className='footer'>
+                            <PostActionCard
+                                id={this.props.id}
+                                comments={this.props.comments}
+                                message={this.props.cardMessage}
+                                likes={this.props.likes}
+                            />
                         </div>
                     </div>
-                </div>
+                    <div className="a1 fade-scroll"></div>
+                    <div className="a1 fade-scroll"></div>
+                    <div className="a1 fade-scroll"></div>
+                    <div className="a1 fade-scroll"></div>
+                    <div className="a1 fade-scroll"></div>
+                </section>
+            </form>
         )
     }
 }

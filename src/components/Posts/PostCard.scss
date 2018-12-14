@@ -7,7 +7,12 @@
     height: 40px;
 }
 
-.action-card-css {
-    display: block;
-    text-align: left;
+
+
+.no-button {
+    border: none;
+    background-color: white;
+}
+.no-button :hover{
+    cursor: pointer;
 }

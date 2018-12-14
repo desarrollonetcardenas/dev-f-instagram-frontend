@@ -8,29 +8,26 @@ class NavBar extends Component {
 
   render() {
     return (
-        <nav>
-            <div className="nav-wrapper bg-main">
-                <a href="/">
-                    <img className="brand-logo" src={process.env.PUBLIC_URL + '/instagram-vector.png'} alt="" />
-                </a>
-                <ul className="right hide-on-med-and-down">
-                    {
-                        isAuthenticated() == true ? (
-                            <React.Fragment>
-                                <li><a href="/logout" className="btn-btn-primary">Logout</a></li>
-                                <li><a href="/uploadpost" className="btn-btn-primary">Upload Post</a></li>
-                                <li><a href="/posts" className="btn-btn-primary">Posts</a></li>
-                            </React.Fragment>
-                            ) : (
-                            <React.Fragment>
-                                <li><a href="/signup" className="btn-btn-primary">Sing Up</a></li>
-                                <li><a href="/login" className="btn-btn-primary">Login</a></li>
-                            </React.Fragment>
-                        )
-                    }
-                </ul>
-            </div>
-        </nav>
+        <React.Fragment>
+            <nav className="navbar">
+                <div><a href='#'><i className="fa fa-instagram"></i><span></span></a></div>
+                {/* <div className='lil-bar'>
+                    <div className='bar-cont'>
+                        <a href='#' role="button"><i className="fa fa-user-plus"></i></a>
+                        <a href='#' onclick='return false;' className='list-order' role="button"><i className="fa fa-ellipsis-h"></i></a>
+                    </div>
+                </div>
+                <div className="list">
+                    <ul>
+                        <li><a href="https://goo.gl/TChSJ4" target='_blank'><img src="https://goo.gl/aVijkX" className="avatar avatar-50"/>uncle_oreo</a></li>
+                        <li><a href='#'>Log in</a></li>
+                        <li><a href='#'>Sign up</a></li>
+                        <li><a href='#'>Report this user</a></li>
+                        <li className='collapse'><a href='#'>Collapse the bar</a></li>
+                    </ul>
+                </div> */}
+            </nav>
+        </React.Fragment>
     )
   }
 }

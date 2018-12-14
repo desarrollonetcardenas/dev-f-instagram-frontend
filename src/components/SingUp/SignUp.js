@@ -53,12 +53,12 @@ export default class  SignUp extends Component {
 
   renderForm = () => {
     return (
-      <div className="container">
+      <div className="container signup-form">
         <div className="row">
-          <div className="col-s12">
+          <div className="col s6">
 
               <div className="row">
-                <div className="col-s6 input-field">
+                <div className="col s12 input-field">
                   <Input
                     id="first_name"
                     type="text"
@@ -71,7 +71,7 @@ export default class  SignUp extends Component {
               </div>
 
               <div className="row">
-                <div className="col-s6 input-field">
+                <div className="col s12 input-field">
                   <Input
                     id="last_name"
                     type="text"
@@ -84,7 +84,7 @@ export default class  SignUp extends Component {
               </div>
 
               <div className="row">
-                <div className="col-s6 input-field">
+                <div className="col s12 input-field">
                   <Input
                     id="email"
                     type="email"
@@ -97,7 +97,7 @@ export default class  SignUp extends Component {
               </div>
 
             <div className="row">
-              <div className="col-s6 input-field">
+              <div className="col s12 input-field">
                 <Input
                   id="password"
                   type="password"
@@ -110,7 +110,7 @@ export default class  SignUp extends Component {
             </div>
 
             <div className="row">
-              <div className="col-s6 input-field">
+              <div className="col s12 input-field">
                 <Input
                   id="confirmPassword"
                   type="password"
@@ -125,7 +125,12 @@ export default class  SignUp extends Component {
           </div>
         </div>
 
-        <button type="submit" className="waves-effect waves-light btn btn-primary">Submit</button>
+        <div className="row">
+          <div className="col s6">
+            <button type="submit" className="waves-effect waves-light btn btn-primary">Submit</button>
+          </div>
+        </div>
+
 
       </div>
       )

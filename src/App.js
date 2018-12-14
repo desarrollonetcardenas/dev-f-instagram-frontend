@@ -6,19 +6,37 @@ import routes from './Routes'
 import { NavBar } from './common/NavBar';
 import './App.scss';
 import client from './Graphql';
+import { Footer } from './common/Footer';
 
 
 class App extends Component {
   render() {
     return (
       <ApolloProvider client={client}>
-        <div className="App">
-          <Router>
-            <React.Fragment>
-              <NavBar/>
-              {routes}
-            </React.Fragment>
-          </Router>
+        <div className="container">
+          <div className="row">
+            <div className="col s12">
+              <Router>
+                <React.Fragment>
+                  <div className="row">
+                    <div className="col s12">
+                      <NavBar/>
+                    </div>
+                  </div>
+                  <div className="row container-margin">
+                    <div className="col s12">
+                      {routes}
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col s12">
+                      <Footer/>
+                    </div>
+                  </div>
+                </React.Fragment>
+              </Router>
+              </div>
+            </div>
         </div>
       </ApolloProvider>
     );

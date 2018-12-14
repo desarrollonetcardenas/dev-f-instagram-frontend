@@ -23,7 +23,7 @@ class Home extends Component {
 
     render() {
         return (
-            <div className="Home">
+            <div className="container">
                 <div className="row">
                     <div className="col s12 Home-title">
                     {
